@@ -1,0 +1,2 @@
+priority=5,in_port=1,action=output:3
+priority=0,action=NORMAL

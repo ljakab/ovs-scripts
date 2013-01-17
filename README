@@ -1,0 +1,12 @@
+These scripts are for testing VXLAN and LISP tunnels in Open vSwitch (OVS).
+The intended scenario is comprised by two virtual machines (192.168.127.1 and
+.2) running OVS, and each hosting a VM with statically assigned IPs
+(192.168.31.1 and .2) connected to tap0 on the host VMs.
+
+  * `start-ovs`: loads the OVS datapath kernel module and sets up the OVS
+    daemons with a clean configuration
+  * `stop-ovs`: unloads the OVS kernel module and stops the daemons
+  * `vxlan-scenario`: to be run after `start-ovs`, sets up a VXLAN tunnel
+    between the host VMs
+  * `lisp-scenario`: to be run after `start-ovs`, sets up a LISP tunnel
+    between the host VMs

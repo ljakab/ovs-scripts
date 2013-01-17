@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source `dirname $0`/environment
+
+kill `cat /usr/local/var/run/openvswitch/ovs-vswitchd.pid`>/dev/null 2>&1
+kill `cat /usr/local/var/run/openvswitch/ovsdb-server.pid`>/dev/null 2>&1
+modprobe -r openvswitch
+tunctl -d ${VM_IFACE}
+
+sleep 1
+ps aux | grep ovs
+lsmod | grep openvswitch
+
+echo
+echo "You may need to restart the network to get to a consistent state"
