@@ -9,10 +9,10 @@ rm -f /usr/local/etc/openvswitch/conf.db
 ${BIN}/ovsdb-tool create /usr/local/etc/openvswitch/conf.db ${BUILD_DIR}/vswitchd/vswitch.ovsschema
 
 ${SBIN}/ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock \
-                     --remote=db:Open_vSwitch,manager_options \
-                     --private-key=db:SSL,private_key \
-                     --certificate=db:SSL,certificate \
-                     --bootstrap-ca-cert=db:SSL,ca_cert \
+                     --remote=db:Open_vSwitch,Open_vSwitch,manager_options \
+                     --private-key=db:Open_vSwitch,SSL,private_key \
+                     --certificate=db:Open_vSwitch,SSL,certificate \
+                     --bootstrap-ca-cert=db:Open_vSwitch,SSL,ca_cert \
                      --pidfile --detach
 
 ${BIN}/ovs-vsctl --no-wait init
