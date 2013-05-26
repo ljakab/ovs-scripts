@@ -7,8 +7,10 @@ ${BIN}/ovs-vsctl -- --if-exists del-br br0
 ${BIN}/ovs-vsctl add-br br0
 ${BIN}/ovs-vsctl add-port br0 ${VM_IFACE}
 ${BIN}/ovs-vsctl add-port br0 ${OVS_IFACE}
-${BIN}/ovs-vsctl add-port br0 lisp0 -- set Interface lisp0 type=lisp options:remote_ip=192.168.127.2
-${BIN}/ovs-vsctl show
+#${BIN}/ovs-vsctl add-port br0 lisp0 -- set Interface lisp0 type=lisp options:remote_ip=192.168.127.2 options:out_key=66051 options:in_key=1056816
+${BIN}/ovs-vsctl add-port br0 lisp0 -- set Interface lisp0 type=lisp options:remote_ip=192.168.127.2 options:out_key=flow options:in_key=flow
+#${BIN}/ovs-vsctl add-port br0 lisp1 -- set Interface lisp1 type=lisp options:remote_ip=192.168.127.3
+${BIN}/ovs-ofctl show br0
 
 ${BIN}/ovs-ofctl del-flows br0
 ${BIN}/ovs-ofctl add-flows br0 flow_table_lisp

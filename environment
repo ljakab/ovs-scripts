@@ -1,4 +1,4 @@
-BUILD_DIR=$HOME/src/ovs-vxlan
+BUILD_DIR=$HOME/src/openvswitch
 
 BIN=/usr/local/bin
 SBIN=/usr/local/sbin
