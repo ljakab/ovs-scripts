@@ -3,6 +3,7 @@
 source `dirname $0`/environment
 
 modprobe -r openvswitch
+modprobe gre
 insmod ${BUILD_DIR}/datapath/linux/openvswitch.ko
 
 rm -f /usr/local/etc/openvswitch/conf.db
