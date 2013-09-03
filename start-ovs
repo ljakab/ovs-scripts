@@ -3,6 +3,7 @@
 source `dirname $0`/environment
 
 modprobe -r openvswitch
+modprobe libcrc32c
 modprobe gre
 insmod ${BUILD_DIR}/datapath/linux/openvswitch.ko
 
