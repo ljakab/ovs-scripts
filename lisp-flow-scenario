@@ -16,3 +16,6 @@ ${BIN}/ovs-ofctl add-flows br0 flow_table_lisp_new
 ifconfig ${VM_IFACE} up
 ifconfig ${OVS_IFACE} 0.0.0.0
 ifconfig br0 ${OVS_PREFIX} up
+
+# Set static ARP entries, to avoid ARP lookups to make debugging easier
+arp -f
