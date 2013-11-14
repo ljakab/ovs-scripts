@@ -8,10 +8,12 @@ ${BIN}/ovs-vsctl add-br br0
 ${BIN}/ovs-vsctl add-port br0 ${VM_IFACE}
 ${BIN}/ovs-vsctl add-port br0 ${OVS_IFACE}
 ${BIN}/ovs-vsctl add-port br0 lisp0 -- set Interface lisp0 type=lisp options:remote_ip=flow options:key=flow
-${BIN}/ovs-ofctl show br0
+${BIN}/ovs-vsctl set bridge br0 protocol=${OVS_PROTO}
+${BIN}/ovs-vsctl show
 
-${BIN}/ovs-ofctl del-flows br0
-${BIN}/ovs-ofctl add-flows br0 flow_table_lisp_new
+${BIN}/ovs-ofctl -O ${OVS_PROTO} show br0
+${BIN}/ovs-ofctl -O ${OVS_PROTO} del-flows br0
+${BIN}/ovs-ofctl -O ${OVS_PROTO} add-flows br0 flow_table_lisp_new
 
 ifconfig ${VM_IFACE} up
 ifconfig ${OVS_IFACE} 0.0.0.0

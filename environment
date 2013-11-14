@@ -7,3 +7,4 @@ VM_IFACE=tap0
 OVS_IFACE=eth1
 OVS_PREFIX=`/usr/sbin/ip addr show ${OVS_IFACE} | awk '/inet / { print $2 }'`
 OVS_IP=`/usr/sbin/ip addr show ${OVS_IFACE} | awk '/inet / { gsub(/\/[0-9]+/, "") ; print $2 }'`
+OVS_PROTO=OpenFlow13
