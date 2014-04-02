@@ -1,4 +1,4 @@
-priority=3,in_port=3,action=mod_dl_dst:00:00:0c:15:c0:a1,output:1
+priority=3,in_port=3,tun_id=0x10203,action=mod_dl_dst:00:00:0c:15:c0:a1,output:1
 priority=2,in_port=1,dl_type=0x0806,action=NORMAL
 priority=1,in_port=1,dl_type=0x0800,vlan_tci=0,nw_dst=192.168.31.2/32,action=set_field:0x10203->tun_id,set_field:192.168.127.2->tun_dst,output:3
 priority=1,in_port=1,dl_type=0x0800,vlan_tci=0,nw_dst=192.168.31.4/32,action=set_field:0x10203->tun_id,set_field:192.168.127.2->tun_dst,output:3
