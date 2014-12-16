@@ -4,7 +4,11 @@ BIN=/usr/local/bin
 SBIN=/usr/local/sbin
 
 VM_IFACE=tap0
-OVS_IFACE=eth1
-OVS_PREFIX=`/usr/sbin/ip addr show ${OVS_IFACE} | awk '/inet / { print $2 }'`
-OVS_IP=`/usr/sbin/ip addr show ${OVS_IFACE} | awk '/inet / { gsub(/\/[0-9]+/, "") ; print $2 }'`
+OVS_IFACE=vboxnet0
+OVS_PREFIX=`ip addr show ${OVS_IFACE} | awk '/inet / { print $2 }'`
+OVS_IP=`ip addr show ${OVS_IFACE} | awk '/inet / { gsub(/\/[0-9]+/, "") ; print $2 }'`
 OVS_PROTO=OpenFlow13
+
+LISP_LOCAL_EID=192.168.31.1
+LISP_PEER_EID=192.168.31.2
+LISP_PEER_RLOC=192.168.56.101
