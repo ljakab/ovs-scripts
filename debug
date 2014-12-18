@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source `dirname $0`/environment
+
+${BIN}/ovs-appctl vlog/set dbg
+${BIN}/ovs-appctl vlog/set jsonrpc,info
+${BIN}/ovs-appctl vlog/set netlink_socket,info
+${BIN}/ovs-appctl vlog/set poll_loop,info
