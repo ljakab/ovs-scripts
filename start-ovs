@@ -4,9 +4,8 @@ source `dirname $0`/environment
 
 modprobe -r openvswitch
 modprobe -q libcrc32c
-modprobe -q gre
-modprobe -q vxlan
 insmod ${BUILD_DIR}/datapath/linux/openvswitch.ko
+insmod ${BUILD_DIR}/datapath/linux/vport-lisp.ko
 
 rm -f /usr/local/etc/openvswitch/conf.db
 ${BIN}/ovsdb-tool create /usr/local/etc/openvswitch/conf.db ${BUILD_DIR}/vswitchd/vswitch.ovsschema
